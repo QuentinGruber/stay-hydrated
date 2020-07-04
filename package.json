@@ -1,66 +1,41 @@
 {
   "name": "stay-hydrated",
-  "productName": "stay-hydrated",
-  "version": "1.0.0",
-  "description": "My Electron application description",
-  "main": "dist/index.js",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "start": "tsc && electron-forge start",
-    "package": "electron-forge package",
-    "make": "electron-forge make",
-    "publish": "electron-forge publish",
-    "lint": "eslint --ext .ts ."
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "electron:build": "vue-cli-service electron:build",
+    "electron:serve": "vue-cli-service electron:serve",
+    "postinstall": "electron-builder install-app-deps",
+    "postuninstall": "electron-builder install-app-deps"
   },
-  "keywords": [],
-  "author": {
-    "name": "QuentinGruber",
-    "email": "QuentinGruber@gmail.com"
-  },
-  "license": "MIT",
-  "config": {
-    "forge": {
-      "packagerConfig": {},
-      "makers": [
-        {
-          "name": "@electron-forge/maker-squirrel",
-          "config": {
-            "name": "stay_hydrated"
-          }
-        },
-        {
-          "name": "@electron-forge/maker-zip",
-          "platforms": [
-            "darwin"
-          ]
-        },
-        {
-          "name": "@electron-forge/maker-deb",
-          "config": {}
-        },
-        {
-          "name": "@electron-forge/maker-rpm",
-          "config": {}
-        }
-      ]
-    }
+  "main": "background.js",
+  "dependencies": {
+    "@types/electron-devtools-installer": "^2.2.0",
+    "@types/jquery": "^3.5.0",
+    "@types/node": "^12.0.0",
+    "core-js": "^3.6.5",
+    "jquery": "^3.5.1",
+    "vue": "^2.6.11",
+    "vue-class-component": "^7.2.3",
+    "vue-property-decorator": "^8.4.2"
   },
   "devDependencies": {
-    "@electron-forge/cli": "6.0.0-beta.52",
-    "@electron-forge/maker-deb": "6.0.0-beta.52",
-    "@electron-forge/maker-rpm": "6.0.0-beta.52",
-    "@electron-forge/maker-squirrel": "6.0.0-beta.52",
-    "@electron-forge/maker-zip": "6.0.0-beta.52",
-    "@typescript-eslint/eslint-plugin": "^2.18.0",
-    "@typescript-eslint/parser": "^2.18.0",
-    "electron": "^9.0.5",
-    "eslint": "^6.8.0",
-    "eslint-plugin-import": "^2.20.0",
-    "typescript": "^3.7.0"
-  },
-  "dependencies": {
-    "@types/jquery": "^3.5.0",
-    "@types/node": "^12.0.14",
-    "electron-squirrel-startup": "^1.0.0",
-    "jquery": "^3.5.1"
+    "@typescript-eslint/eslint-plugin": "^2.33.0",
+    "@typescript-eslint/parser": "^2.33.0",
+    "@vue/cli-plugin-babel": "~4.4.0",
+    "@vue/cli-plugin-eslint": "~4.4.0",
+    "@vue/cli-plugin-typescript": "~4.4.0",
+    "@vue/cli-service": "~4.4.0",
+    "@vue/eslint-config-typescript": "^5.0.2",
+    "electron": "^9.0.0",
+    "electron-devtools-installer": "^3.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "typescript": "~3.9.3",
+    "vue-cli-plugin-electron-builder": "~2.0.0-rc.4",
+    "vue-template-compiler": "^2.6.11"
   }
 }
