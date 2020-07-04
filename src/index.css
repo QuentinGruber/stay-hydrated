@@ -1,6 +1,26 @@
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
   margin: auto;
   max-width: 38rem;
   padding: 2rem;
+}
+
+.glass {
+  margin: 30px auto;
+  height: 300px;
+  width: 100px;
+  position: relative;
+  border-style: none solid solid solid;
+  border-width: 10px;
+  border-color: lightgray;
+  border-radius: 10px;
+}
+
+.water {
+  width: 100%;
+  height: 10%;
+  background-color: skyblue;
+  position: absolute;
+  bottom: 0;
 }
