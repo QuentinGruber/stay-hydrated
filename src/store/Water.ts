@@ -5,7 +5,7 @@ Vue.use(Vuex);
 
 // Accesible with $store.state.count
 const state = {
-  WaterLevel: 10,
+  WaterLevel: 100,
 };
 
 export default new Vuex.Store({

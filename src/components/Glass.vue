@@ -1,7 +1,11 @@
 <template>
   <div>
     <div class="glass">
-      <div class="water">{{ store.state.WaterLevel }}</div>
+      <div class="water">
+        <!-- Dirty hack-->
+        <h2 style="display: none">{{ store.state.WaterLevel }}</h2>
+        <!-- Dirty hack-->
+      </div>
     </div>
   </div>
 </template>
@@ -23,8 +27,11 @@ export default {
     },
   },
   created() {
+    this.SetWaterLevel(store.state.WaterLevel);
+
+    // reduce waterlevel every minute
     setInterval(() => {
-      store.commit("SetWaterLevel", Math.random() * 100);
+      store.commit("SetWaterLevel", store.state.WaterLevel - 0.028);
     }, 1000);
   },
   updated() {
