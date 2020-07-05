@@ -1,18 +1,18 @@
 <template>
   <div id="app">
     <h1>STAY HYDRATED !</h1>
-    <WaterLevel v-bind:level="100" />
+    <Glass />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import WaterLevel from "./components/WaterLevel.vue";
+import Glass from "./components/Glass.vue";
 
 @Component({
   components: {
-    WaterLevel
-  }
+    Glass,
+  },
 })
 export default class App extends Vue {}
 </script>

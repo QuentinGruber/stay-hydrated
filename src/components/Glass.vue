@@ -9,23 +9,24 @@
 <script lang="ts">
 import { Component, Vue, Prop } from "vue-property-decorator";
 import $ from "jquery";
+import store from "../store/Water";
 export default {
   methods: {
     SetWaterLevel(height: number) {
       $(function() {
         $(".water").animate(
           {
-            height: "" + height + "%"
+            height: "" + height + "%",
           },
           1000
         );
       });
-    }
+    },
   },
   created() {
-    const level: number = parseFloat(this.$attrs.level);
-    this.SetWaterLevel(level);
-  }
+    store.commit("SetWaterLevel", 10);
+    this.SetWaterLevel(store.state.WaterLevel);
+  },
 };
 </script>
 
