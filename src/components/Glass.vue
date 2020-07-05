@@ -1,13 +1,12 @@
 <template>
   <div>
     <div class="glass">
-      <div class="water"></div>
+      <div class="water">{{ store.state.WaterLevel }}</div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop } from "vue-property-decorator";
 import $ from "jquery";
 import store from "../store/Water";
 export default {
@@ -24,8 +23,17 @@ export default {
     },
   },
   created() {
-    store.commit("SetWaterLevel", 10);
+    setInterval(() => {
+      store.commit("SetWaterLevel", Math.random() * 100);
+    }, 1000);
+  },
+  updated() {
     this.SetWaterLevel(store.state.WaterLevel);
+  },
+  data() {
+    return {
+      store: store,
+    };
   },
 };
 </script>
