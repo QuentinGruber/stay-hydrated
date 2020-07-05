@@ -13,21 +13,19 @@
 <script lang="ts">
 import $ from "jquery";
 import store from "../store/Water";
+function SetWaterLevel(height: number) {
+  $(function() {
+    $(".water").animate(
+      {
+        height: "" + height + "%",
+      },
+      1
+    );
+  });
+}
 export default {
-  methods: {
-    SetWaterLevel(height: number) {
-      $(function() {
-        $(".water").animate(
-          {
-            height: "" + height + "%",
-          },
-          1
-        );
-      });
-    },
-  },
   created() {
-    this.SetWaterLevel(store.state.WaterLevel);
+    SetWaterLevel(store.state.WaterLevel);
 
     // reduce waterlevel every minute
     setInterval(() => {
@@ -37,7 +35,7 @@ export default {
     }, 1000);
   },
   updated() {
-    this.SetWaterLevel(store.state.WaterLevel);
+    SetWaterLevel(store.state.WaterLevel);
   },
   data() {
     return {
