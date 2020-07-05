@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <h1>STAY HYDRATED !</h1>
-    <WaterLevel />
+    <WaterLevel v-bind:level="100" />
   </div>
 </template>
 

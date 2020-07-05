@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div>
     <div class="glass">
       <div class="water"></div>
     </div>
@@ -7,28 +7,34 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Vue, Prop } from "vue-property-decorator";
 import $ from "jquery";
-
-$(function() {
-  $(".water").animate(
-    {
-      height: "75%",
-    },
-    1000
-  );
-});
-
-@Component
-export default class WaterLevel extends Vue {}
+export default {
+  methods: {
+    SetWaterLevel(height: number) {
+      $(function() {
+        $(".water").animate(
+          {
+            height: "" + height + "%"
+          },
+          1000
+        );
+      });
+    }
+  },
+  created() {
+    const level: number = parseFloat(this.$attrs.level);
+    this.SetWaterLevel(level);
+  }
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .glass {
   margin: 30px auto;
-  height: 300px;
-  width: 100px;
+  height: 400px;
+  width: 150px;
   position: relative;
   border-style: none solid solid solid;
   border-width: 10px;
@@ -38,7 +44,7 @@ export default class WaterLevel extends Vue {}
 
 .water {
   width: 100%;
-  height: 10%;
+  height: 00%;
   background-color: skyblue;
   position: absolute;
   bottom: 0;
