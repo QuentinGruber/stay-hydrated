@@ -1,6 +1,8 @@
 {
   "name": "stay-hydrated",
   "version": "0.1.0",
+  "author": "Gruber Quentin",
+  "description": "Reminder to drink water",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
