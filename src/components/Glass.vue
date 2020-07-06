@@ -44,7 +44,7 @@ export default {
         if (ReminderTimeLeft != ReminderTime) {
           ReminderTimeLeft = ReminderTime;
         }
-        store.commit("SetWaterLevel", store.state.WaterLevel - 20);
+        store.commit("SetWaterLevel", store.state.WaterLevel - 0.028);
       } else if (ReminderTimeLeft === 0) {
         WaterReminder();
         ReminderTimeLeft = ReminderTime;
