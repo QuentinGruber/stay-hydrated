@@ -23,6 +23,17 @@ function SetWaterLevel(height: number) {
     );
   });
 }
+function WaterReminder() {
+  const options = {
+    title: "STAY HYDRATED !",
+    body: "You haven't had a drink in an hour.",
+  };
+  new Notification(options.title, options);
+}
+let FirstReminderShowed = false;
+const ReminderTime = 60;
+let ReminderTimeLeft = ReminderTime;
+
 export default {
   created() {
     SetWaterLevel(store.state.WaterLevel);
@@ -30,7 +41,19 @@ export default {
     // reduce waterlevel every minute
     setInterval(() => {
       if (store.state.WaterLevel > 0) {
-        store.commit("SetWaterLevel", store.state.WaterLevel - 0.028);
+        if (ReminderTimeLeft != ReminderTime) {
+          ReminderTimeLeft = ReminderTime;
+        }
+        store.commit("SetWaterLevel", store.state.WaterLevel - 20);
+      } else if (ReminderTimeLeft === 0) {
+        WaterReminder();
+        ReminderTimeLeft = ReminderTime;
+      } else {
+        if (!FirstReminderShowed) {
+          WaterReminder();
+          FirstReminderShowed = true;
+        }
+        ReminderTimeLeft--;
       }
     }, 1000);
   },
