@@ -54,7 +54,7 @@ function createWindow() {
     if (win != null) {
       win.hide();
       const iconPath = path.join(__dirname, "../src/assets/logo.png"); // TODO: maybe use static asset but fix tray icon
-      let tray = new Tray(nativeImage.createFromPath(iconPath));
+      const tray = new Tray(nativeImage.createFromPath(iconPath));
       const contextMenu = Menu.buildFromTemplate([
         {
           label: "Quit",
