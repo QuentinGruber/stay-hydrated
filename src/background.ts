@@ -10,7 +10,6 @@ import {
 } from "electron";
 import { createProtocol } from "vue-cli-plugin-electron-builder/lib";
 import installExtension, { VUEJS_DEVTOOLS } from "electron-devtools-installer";
-import { pathToFileURL } from "url";
 import path from "path";
 const isDevelopment = process.env.NODE_ENV !== "production";
 
@@ -28,6 +27,7 @@ function createWindow() {
   win = new BrowserWindow({
     width: 400,
     height: 700,
+    title: "Stay Hydrated !",
     fullscreenable: false,
     resizable: false,
 
@@ -75,6 +75,9 @@ function createWindow() {
     }
   }
 
+  win.on("page-title-updated", (e) => {
+    e.preventDefault();
+  });
   win.on("minimize", () => {
     CreateTray();
   });
