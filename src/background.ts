@@ -1,5 +1,5 @@
 "use strict";
-
+declare const __static: string;
 import {
   app,
   protocol,
@@ -53,7 +53,7 @@ function createWindow() {
   function CreateTray() {
     if (win != null) {
       win.hide();
-      const iconPath = path.join(__dirname, "../src/assets/logo.png"); // TODO: maybe use static asset but fix tray icon
+      const iconPath = path.join(__static, "assets/logo.png");
       const tray = new Tray(nativeImage.createFromPath(iconPath));
       const contextMenu = Menu.buildFromTemplate([
         {
