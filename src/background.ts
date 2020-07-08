@@ -58,6 +58,16 @@ function createWindow() {
       const tray = new Tray(nativeImage.createFromPath(AppLogo));
       const contextMenu = Menu.buildFromTemplate([
         {
+          label: "Open",
+          type: "normal",
+          click() {
+            if (win != null) {
+              win.show();
+              tray.destroy();
+            }
+          },
+        },
+        {
           label: "Quit",
           type: "normal",
           click() {
