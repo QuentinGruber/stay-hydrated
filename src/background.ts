@@ -115,6 +115,18 @@ app.on("ready", async () => {
     } catch (e) {
       console.error("Vue Devtools failed to install:", e.toString());
     }
+  } else {
+    const AutoLaunch = require("auto-launch");
+
+    let autoLaunch = new AutoLaunch({
+      name: "Stay Hydrated !",
+      path: app.getPath("exe"),
+    });
+    autoLaunch.isEnabled().then((isEnable: boolean) => {
+      if (!isEnable) {
+        autoLaunch.enable();
+      }
+    });
   }
   createWindow();
 });
