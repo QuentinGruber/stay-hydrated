@@ -14,13 +14,13 @@ export default {
       $(function() {
         $(".water").animate(
           {
-            height: "" + 100 + "%",
+            height: "" + 100 + "%"
           },
           1000
         );
       });
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -34,6 +34,7 @@ button {
   display: inline-block;
   cursor: pointer;
   color: #ffffff;
+  outline: none;
   font-family: Arial;
   font-size: 15px;
   font-weight: bold;
