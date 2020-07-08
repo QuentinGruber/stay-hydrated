@@ -1,5 +1,6 @@
 "use strict";
 declare const __static: string;
+const AppLogo = path.join(__static, "assets/logo.png");
 import {
   app,
   protocol,
@@ -30,6 +31,7 @@ function createWindow() {
     title: "Stay Hydrated !",
     fullscreenable: false,
     resizable: false,
+    icon: AppLogo,
 
     webPreferences: {
       // Use pluginOptions.nodeIntegration, leave this alone
@@ -53,8 +55,7 @@ function createWindow() {
   function CreateTray() {
     if (win != null) {
       win.hide();
-      const iconPath = path.join(__static, "assets/logo.png");
-      const tray = new Tray(nativeImage.createFromPath(iconPath));
+      const tray = new Tray(nativeImage.createFromPath(AppLogo));
       const contextMenu = Menu.buildFromTemplate([
         {
           label: "Quit",
