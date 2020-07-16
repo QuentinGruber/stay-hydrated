@@ -12,6 +12,7 @@ import {
 import { createProtocol } from "vue-cli-plugin-electron-builder/lib";
 import installExtension, { VUEJS_DEVTOOLS } from "electron-devtools-installer";
 import path from "path";
+const isWin = process.platform === "win32";
 const isDevelopment = process.env.NODE_ENV !== "production";
 
 // Keep a global reference of the window object, if you don't, the window will
@@ -90,7 +91,9 @@ function createWindow() {
     e.preventDefault();
   });
   win.on("minimize", () => {
-    CreateTray();
+    if (isWin) {
+      CreateTray();
+    }
   });
   win.on("closed", () => {
     win = null;
