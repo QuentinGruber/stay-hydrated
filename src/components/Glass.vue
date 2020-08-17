@@ -3,7 +3,7 @@
     <div class="glass">
       <div class="water">
         <!-- Dirty hack-->
-        <h2 style="display:none">{{ store.state.WaterLevel }}</h2>
+        <h2 style="display: none;">{{ store.state.WaterLevel }}</h2>
         <!-- Dirty hack-->
       </div>
     </div>
@@ -14,7 +14,7 @@
 import $ from "jquery";
 import store from "../store/Water";
 function SetWaterLevel(height: number) {
-  $(function() {
+  $(function () {
     $(".water").animate(
       {
         height: "" + height + "%",
@@ -40,20 +40,22 @@ export default {
 
     // reduce waterlevel every minute
     setInterval(() => {
-      if (store.state.WaterLevel > 0) {
-        if (ReminderTimeLeft != ReminderTime) {
-          ReminderTimeLeft = ReminderTime;
-        }
-        store.commit("SetWaterLevel", store.state.WaterLevel - 0.028);
-      } else if (ReminderTimeLeft === 0) {
-        WaterReminder();
-        ReminderTimeLeft = ReminderTime;
-      } else {
-        if (!FirstReminderShowed) {
+      if (!store.state._paused) {
+        if (store.state.WaterLevel > 0) {
+          if (ReminderTimeLeft != ReminderTime) {
+            ReminderTimeLeft = ReminderTime;
+          }
+          store.commit("SetWaterLevel", store.state.WaterLevel - 0.028);
+        } else if (ReminderTimeLeft === 0) {
           WaterReminder();
-          FirstReminderShowed = true;
+          ReminderTimeLeft = ReminderTime;
+        } else {
+          if (!FirstReminderShowed) {
+            WaterReminder();
+            FirstReminderShowed = true;
+          }
+          ReminderTimeLeft--;
         }
-        ReminderTimeLeft--;
       }
     }, 1000);
   },
