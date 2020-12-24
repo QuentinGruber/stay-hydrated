@@ -131,7 +131,7 @@ app.on("ready", async () => {
   } else {
     const AutoLaunch = require("auto-launch");
 
-    let autoLaunch = new AutoLaunch({
+    const autoLaunch = new AutoLaunch({
       name: "Stay Hydrated !",
       path: app.getPath("exe"),
     });
